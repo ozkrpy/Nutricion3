@@ -7,10 +7,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   getAll() {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`)
-  }
+    console.log('usuarios atempted');
 
+    return this.http.get<User[]>(`${environment.apiUrl}/usuarios`);
+  }
 }

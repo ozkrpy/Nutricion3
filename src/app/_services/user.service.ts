@@ -9,8 +9,6 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   constructor(private http: HttpClient) {}
   getAll() {
-    console.log('usuarios atempted');
-
     return this.http.get<User[]>(`${environment.apiUrl}/usuarios`);
   }
 }

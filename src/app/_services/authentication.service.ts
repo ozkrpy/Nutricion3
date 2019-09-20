@@ -24,12 +24,10 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    console.log('LOGIN ATTEMPTED');
     return this.http
       .post<any>(`${environment.apiUrl}/login`, { username, password })
       .pipe(
         map(user => {
-          console.log(JSON.stringify(user));
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
           return user;

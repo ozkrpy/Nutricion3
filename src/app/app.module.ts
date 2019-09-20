@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent],
@@ -19,7 +19,10 @@ import { JwtInterceptor } from './_helpers';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

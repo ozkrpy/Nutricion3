@@ -20,8 +20,6 @@ export class HomeComponent {
       .getAll()
       .pipe(first())
       .subscribe(users => {
-        console.log(users);
-
         this.loading = false;
         this.users = users;
       });
